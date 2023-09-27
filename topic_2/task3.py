@@ -1,28 +1,49 @@
 import math
 
-def quadratic_equation_solver(a, b, c):
-    # Обчислюємо дискримінант
-    D = b**2 - 4*a*c
+def add(x, y):
+    return x + y
+
+def subtract(x, y):
+    return x - y
+
+def multiply(x, y):
+    return x * y
+
+def divide(x, y):
+    if y == 0:
+        return "Ділення на нуль неможливе"
+    return x / y
+
+while True:
+    print("Виберіть операцію:")
+    print("1. Додавання")
+    print("2. Віднімання")
+    print("3. Множення")
+    print("4. Ділення")
+    print("5. Вихід")
+
+    choice = input("Введіть номер операції (1/2/3/4/5): ")
     
-    # Перевірка значення дискримінанту
-    if D < 0:
-        # Дискримінант менше нуля - рівняння не має дійсних коренів
-        return "Рівняння не має дійсних коренів"
-    elif D == 0:
-        # Дискримінант дорівнює нулю - рівняння має один корінь
-        x1 = -b / (2*a)
-        return f"Рівняння має один дійсний корінь: x = {x1}"
-    else:
-        # Дискримінант більше нуля - рівняння має два корені
-        x1 = (-b + math.sqrt(D)) / (2*a)
-        x2 = (-b - math.sqrt(D)) / (2*a)
-        return f"Рівняння має два дійсних корені: x1 = {x1}, x2 = {x2}"
-
-# Введення коефіцієнтів квадратного рівняння
-a = float(input("Введіть коефіцієнт a: "))
-b = float(input("Введіть коефіцієнт b: "))
-c = float(input("Введіть коефіцієнт c: "))
-
-# Виклик функції для розв'язання рівняння і виведення результату
-result = quadratic_equation_solver(a, b, c)
-print(result)
+    match choice:
+        case '1':
+            num1 = float(input("Введіть перше число: "))
+            num2 = float(input("Введіть друге число: "))
+            print("Результат:", add(num1, num2))
+        case '2':
+            num1 = float(input("Введіть перше число: "))
+            num2 = float(input("Введіть друге число: "))
+            print("Результат:", subtract(num1, num2))
+        case '3':
+            num1 = float(input("Введіть перше число: "))
+            num2 = float(input("Введіть друге число: "))
+            print("Результат:", multiply(num1, num2))
+        case '4':
+            num1 = float(input("Введіть перше число: "))
+            num2 = float(input("Введіть друге число: "))
+            result = divide(num1, num2)
+            print("Результат:", result)
+        case '5':
+            print("Бувай!")
+            break
+        case _:
+            print("Невірний вибір. Будь ласка спробуйте ще раз.")
