@@ -1,51 +1,54 @@
-def dodavannya(a, b):
+def add(a, b):
     return a + b
 
-def vidnimannya(a, b):
+def subtract(a, b):
     return a - b
 
-def mnozhennya(a, b):
+def multiply(a, b):
     return a * b
 
-def dilyennya(a, b):
+def divide(a, b):
     if b == 0:
-        raise ZeroDivisionError("Ділення на нуль недопустиме")
+        raise ValueError("Ділення на нуль неможливе")
     return a / b
 
+def get_number(prompt):
+    while True:
+        try:
+            a = float(input(prompt))
+            return a
+        except ValueError:
+            print("Некоректне значення, спробуйте ще раз.")
+
 while True:
-    print("Оберіть операцію:")
+    print("Виберіть операцію:")
     print("1. Додавання")
     print("2. Віднімання")
     print("3. Множення")
     print("4. Ділення")
     print("5. Вихід")
-
-    try:
-        vybir = int(input("Введіть номер операції: "))
-
-        if vybir == 5:
-            break
-
-        num1 = float(input("Введіть перше число: "))
-        num2 = float(input("Введіть друге число: "))
-
-        if vybir == 1:
-            print("Результат:", dodavannya(num1, num2))
-        elif vybir == 2:
-            print("Результат:", vidnimannya(num1, num2))
-        elif vybir == 3:
-            print("Результат:", mnozhennya(num1, num2))
-        elif vybir == 4:
-            try:
-                print("Результат:", dilyennya(num1, num2))
-            except ZeroDivisionError as e:
-                print("Помилка:", e)
-        else:
-            print("Невірний вибір операції")
     
-    except ValueError:
-        print("Невірний формат числа. Будь ласка, введіть число ще раз.")
-    except Exception as e:
-        print("Сталася помилка:", e)
+    choice = input("Номер операції (1/2/3/4/5): ")
+    
+    if choice == "5":
+        print("Вихід...")
+        break
+    
+    if choice in ('1', '2', '3', '4'):
+        first_number = get_number("Перше число: ")
+        second_number = get_number("Друге число: ")
 
-print("Дякуємо за користуванням калькулятором!")
+        if choice == '1':
+            result = add(first_number, second_number)
+        elif choice == '2':
+            result = subtract(first_number, second_number)
+        elif choice == '3':
+            result = multiply(first_number, second_number)
+        elif choice == '4':
+            try:
+                result = divide(first_number, second_number)
+            except ValueError as e:
+                print("Помилка:", e)
+                continue
+
+        print("Результат:", result)
