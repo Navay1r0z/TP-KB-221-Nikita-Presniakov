@@ -1,4 +1,4 @@
-from functions import add, subtract, multiply, divide
+from functions import add, subtract, multiply, divide, get_user_input
 
 def main():
     print("Вітаємо у калькуляторі!")
@@ -16,8 +16,7 @@ def main():
             print("Дякуємо за використання калькулятора. До побачення!")
             break
         
-        num1 = float(input("Введіть перше число: "))
-        num2 = float(input("Введіть друге число: "))
+        num1, num2 = get_user_input()
         
         if choice == '1':
             result = add(num1, num2)
