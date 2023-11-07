@@ -1,0 +1,4 @@
+name: Олексій, age: 19
+name: Михайло, age: 20
+name: Софія, age: 21
+name: Наталія, age: 22
